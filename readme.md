@@ -275,6 +275,19 @@ Selamat sampai dengan tahap ini kita sudah berhasil membuat file SFC pada `Vue.j
 
 ## Let's Demo
 
+Setelah selesai mempelajari ini semua, mari kita coba untuk melakukan pemecahan menjadi components dalam Aplikasi yang sudah dibuat:
+- Aplikasi yang sudah dibuat merupakan sebuah aplikasi sederhana yang menembak data langsung dari json-server yang sudah ada.
+- Aplikasi ini masih berupa sebuah file index.html yang sangat besar
+
+Langkah 1 - Inisialisasi Server
+1. Membuka folder `server` yang sudah disediakan
+1. Menginstall package yang dibutuhkan dengan menggunakan perintah `npm i`
+1. Menjalankan server dengan menggunakan perintah `npx json-server db.json`
+
+Langkah 2 - Inisiaslisasi Client
+1. Membuka folder `client` yang sudah disediakan
+1. 
+
 ### Referensi
 (Single File Components)
 - https://v2.vuejs.org/v2/guide/components.html#Base-Example
