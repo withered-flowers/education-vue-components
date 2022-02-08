@@ -3,6 +3,9 @@
 ## Table of Contents
 1. [Persyaratan Dasar](#persyaratan-dasar)
 1. [Intro to Component](#intro-to-component)
+1. [Component How To](#component-how-to)
+1. [Single File Components](#single-file-components)
+1. [Intro to Build Tools - Parcel](#intro-to-build-tools---parcel)
 1. [Referensi](#referensi)
 
 
@@ -147,10 +150,44 @@ Langkah-langkahnya adalah sebagai berikut:
 
     ```
 1. Menjalankan kembali `live-server` kemudian lihatlah perubahan kode yang terjadi
-  
-(Perkenalan ke parcel)
 
-## Intro to Parcel
+Voila ! sampai di titik ini kita sudah berhasil memecah file yang cukup panjang menjadi beberapa file dan tetap terhubung, mantap bukan !
+
+Namun, dalam menuliskan kode ini, kita masih mengalami beberapa kendala:
+- Template ini masih berupa "satu warna saja" atau dianggap menjadi "string" di dalam code yang dituliskan, sehingga terasa malah jadi sulit
+- Adanya repetisi pada penulisan kode (`Vue.component` blablabla)
+
+Nah bagaimanakah kita menyelesaikan hal tersebut?
+
+Untuk menyelesaikan masalah ini kita harus mengetahui apa itu `Single File Components` dan `Bundler` terlebih dahulu.
+
+## Single File Components
+Seperti yang sudah kita coba di atas, atau di dalam `Vue.js` ini disebut dengan `Global Components` dimana component didefinisikan dengan `Vue.component`, memiliki keterbatasan sebagai berikut:
+- Setiap nama komponen WAJIB unik
+- Template dibuat dalam bentuk `string` sehingga susah karena tidak ada `syntax highlighting`
+- Tidak adanya CSS support dalam component
+- Tidak ada `build step` sehingga hanya membatasi kode dalam bentuk HTML dan JS saja, dan tidak bisa adanya preprocessor (seperti scss, pug, dsb) dan Babel
+
+Semua permasalahan di atas ini bisa diselesaikan dengan cara menggunakan `single file components` dengan sebuah file yang memiliki ektensi `.vue`, NAMUN harus diproses lagi menjadi javascript umumnya dengan menggunakan `build tools` seperti `Webpack` atau `Browserify` atau yang lain lain.
+
+Contoh struktur file dengan ekstensi `.vue`
+```vue
+<template>
+  ...
+</template>
+
+<script>
+  ...
+</script>
+
+<style scoped>
+  ...
+</style>
+```
+
+Nah dikarenakan `Webpack` maupun `Browserify` ini cukup sulit untuk melakukan konfigurasi awalnya, maka dalam pembelajaran ini kita akan menggunakan `build tools` yang cukup mudah bernama `Parcel`
+
+## Intro to Build Tools - Parcel
 
 ## Let's Demo
 
