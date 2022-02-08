@@ -168,7 +168,9 @@ Seperti yang sudah kita coba di atas, atau di dalam `Vue.js` ini disebut dengan 
 - Tidak adanya CSS support dalam component
 - Tidak ada `build step` sehingga hanya membatasi kode dalam bentuk HTML dan JS saja, dan tidak bisa adanya preprocessor (seperti scss, pug, dsb) dan Babel
 
-Semua permasalahan di atas ini bisa diselesaikan dengan cara menggunakan `single file components` dengan sebuah file yang memiliki ektensi `.vue`, NAMUN harus diproses lagi menjadi javascript umumnya dengan menggunakan `build tools` seperti `Webpack` atau `Browserify` atau yang lain lain.
+Semua permasalahan di atas ini bisa diselesaikan dengan cara menggunakan `Single File Components` dengan sebuah file yang memiliki ektensi `.vue`, 
+
+Single File Components (SFC) a.k.a file `*.vue` adalah sebuah file spesial di dalam `Vue.js` yang memperbolehkan kita untuk membungkus template, logic, dan style dari sebuah Component Vue di DALAM SEBUAH FILE.
 
 Contoh struktur file dengan ekstensi `.vue`
 ```vue
@@ -185,15 +187,98 @@ Contoh struktur file dengan ekstensi `.vue`
 </style>
 ```
 
+Akan tetapi, di balik kespesialan hal yang disebutkan di atas, SFC ini HARUS diproses lagi menjadi javascript umumnya dengan menggunakan `build tools` seperti `Webpack` atau `Browserify` atau yang lain lain untuk menjadi file yang bisa dibaca oleh browser.
+
 Nah dikarenakan `Webpack` maupun `Browserify` ini cukup sulit untuk melakukan konfigurasi awalnya, maka dalam pembelajaran ini kita akan menggunakan `build tools` yang cukup mudah bernama `Parcel`
 
 ## Intro to Build Tools - Parcel
+
+Disclaimer:
+- Parcel yang digunakan di pembelajaran ini adalah menggunakan Parcel v1 yang sudah deprecated
+- Parcel v2 tidak support SFC untuk `Vue.js` v2.x
+
+Dikutip dari web `Parcel` nya langsung, adalah suatu `bundler` aplikasi web yang tidak membutuhkan konfigurasi sama sekali. Berbeda dengan `Webpack` ataupun `Browserify` yang membutuhkan konfigurasi yang cukup ekstensif pada awal penggunaannya.
+
+Langkah-langkah untuk menggunakan `Parcel` supaya bisa menggunakan Vue SFC adalah sebagai berikut:
+1. Menginstall `parcel` secara global dengan menggunakan perintah `npm i -g parcel-bundler`
+1. Membuat sebuah folder baru dengan nama `percobaan-2`
+1. Membuat sebuah file baru dengan nama `index.html` di dalam folder tsb.
+1. Menginisialisasi project node dengan menggunakan perintah `npm init -y`
+1. Menginstall package Vue v2 dengan menggunakan perintah `npm i vue@2`
+1. Menuliskan kode pada `index.html` sebagai berikut
+    ```html
+    <!-- File: index.html -->
+
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Percobaan Kedua</title>
+      </head>
+      <body>
+        <div id="app"></div>
+        <!-- import file javascript yang akan digunakan sebagai Vue -->
+        <script src="src/main.js"></script>
+      </body>
+    </html>
+    ```
+1. Membuat folder baru di dalam folder `percobaan-2` dengan nama `src`
+1. Membuat file baru dengan nama `main.js` dan `App.vue` pada folder `src` tersebut
+1. Menuliskan kode pada file `App.vue` sebagai berikut
+    ```html
+    <!-- File: src/App.vue -->
+
+    <template>
+      <div>
+        {{ iniDariData }}
+      </div>
+    </template>
+
+    <script>
+    export default {
+      data() {
+        return {
+          iniDariData: "Halo Dunia",
+        };
+      },
+      // memberikan nama dari Component-nya menjadi App
+      // Bisa di-trace di Vue devtools
+      name: "App",
+    };
+    </script>
+
+    <style></style>
+    ```
+1. Menuliskan kode pada file `main.js` sebagai berikut
+    ```js
+    // File: src/main.js
+
+    import Vue from "vue";
+    import App from "./App.vue";
+
+    // Ini adalah instance vue yang digunakan
+    new Vue({
+      // Fungsi untuk render template
+      render: (createElement) => createElement(App),
+    })
+      // inject ke element html yang mana
+      .$mount("#app");
+    ```
+1. Perhatikan dalam file `main.js` dan `App.vue` syntax penulisan sudah menggunakan syntax ES Modules, BUKAN CommonJS lagi.
+    - `require()` digantikan dengan `import X from 'y'`;
+    - `module.exports` digantikan dengan `exports default`
+1. Menjalankan kode yang sudah dibuat ini dengan menggunakan `parcel index.html`
+
+Selamat sampai dengan tahap ini kita sudah berhasil membuat file SFC pada `Vue.js` dengan menggunakan `parcel` sebagai bundler / build toolsnya !
 
 ## Let's Demo
 
 ### Referensi
 (Single File Components)
 - https://v2.vuejs.org/v2/guide/components.html#Base-Example
+- https://v3.vuejs.org/guide/single-file-component.html
 - https://v2.vuejs.org/v2/guide/single-file-components.html
 - https://v2.vuejs.org/v2/guide/index.html#Composing-with-Components
 - https://v2.vuejs.org/v2/guide/components-registration.html
