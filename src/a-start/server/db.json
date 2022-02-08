@@ -1,0 +1,40 @@
+{
+  "todos": [
+    {
+      "name": "Belajar Vue",
+      "description": "Belajar Vue dari situs Vuenya langsung",
+      "priority": "Critical",
+      "is_done": false,
+      "id": 1
+    },
+    {
+      "name": "Belajar Tailwind",
+      "description": "Belajar Tailwind dari situs Vuenya langsung",
+      "priority": "Low",
+      "is_done": false,
+      "id": 2
+    },
+    {
+      "name": "Buat Aplikasi ToDo",
+      "description": "Buat aplikasi ToDo sederhana dengan memanfaatkan Vue dan Tailwind",
+      "priority": "Highest",
+      "is_done": true,
+      "id": 3
+    },
+    {
+      "name": "Implementasi json-server",
+      "description": "Tarik data dengan Vue + json-server",
+      "priority": "Critical",
+      "is_done": true,
+      "id": 4
+    }
+  ],
+  "users": [
+    {
+      "email": "testing@mail.com",
+      "password": "testing",
+      "access_token": "inihanyalahmockup",
+      "id": 1
+    }
+  ]
+}
