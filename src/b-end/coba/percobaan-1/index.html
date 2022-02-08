@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cobain</title>
+  </head>
+  <body>
+    <div id="app">
+      <p>{{ message }}</p>
+
+      <!-- 2. Menggunakan component-baru yang dideklarasikan di bawah -->
+      <component-baru></component-baru>
+      <!-- 4. Menggunakan component-baru-2 yang dideklarasikan dari file lain -->
+      <component-baru-2></component-baru-2>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <!-- 3. Mendeklarasikan / import ComponentBaru2.js -->
+    <script src="./src/components/ComponentBaru2.js"></script>
+    <script>
+      // 1. Membuat component baru
+      Vue.component("component-baru", {
+        template: "<h1>Selipan baru</h1>",
+      });
+
+      new Vue({
+        el: "#app",
+        data: {
+          message: "Halo Dunia",
+        },
+      });
+    </script>
+  </body>
+</html>
