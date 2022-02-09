@@ -422,9 +422,95 @@ Langkah selanjutnya kita akan mulai menggunakan cara import untuk mengurangi scr
 
 Sampai di langkah ini kita sudah masuk ke dalam penggunaan import yang lebih memanjakan kita yah, selanjutnya kita akan mulai masuk ke dalam pemecahan komponen yang lebih kecil lagi !
 
-Langkah 4 - Pecah Komponen Bagian NavBar
+Langkah 4 - Pecah Komponen Bagian Footer
+1. Membuat sebuah folder baru di dalam `src` dengan nama `components`. Folder ini akan berisi seluruh component yang telah dipecah-pecah.
+1. Membuat sebuah file baru dengan nama `CustomFooter.vue` pada folder `components`
+1. Masukkan kode berikut ke dalam `CustomFooter.vue`
+    ```js
+    <template></template>
 
-Langkah 5 - Pecah Komponen Bagian Login Page
+    <script>
+    export default {
+      name: "CustomFooter",
+    };
+    </script>
+
+    <style></style>
+    ```
+1. Memindahkan `Section 5 - Footer` yang ada pada file `src/App.vue` ke dalam `src/components/CustomFooter.vue` sehingga menjadi sebagai berikut
+    ```js
+    <template>
+      <!-- Section 5 - Footer -->
+      <section class="text-gray-700 bg-white body-font">
+        <div
+          class="container flex flex-col items-center px-8 py-8 mx-auto max-w-7xl sm:flex-row"
+        >
+          <!-- Left Side -->
+          <a
+            href="#_"
+            class="text-xl font-black leading-none text-gray-900 select-none logo"
+            >ToDo VueJS v2</a
+          >
+
+          <!-- Right Side -->
+          <span
+            class="inline-flex justify-center mt-4 space-x-5 sm:ml-auto sm:mt-0 sm:justify-start"
+          >
+            <p
+              class="mt-4 text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l sm:border-gray-200 sm:mt-0"
+            >
+              © Tailwindcss Page Builder x withered-flowers
+            </p>
+          </span>
+        </div>
+      </section>
+    </template>
+
+    <script>
+    export default {
+      name: "CustomFooter",
+    };
+    </script>
+
+    <style></style>
+    ```
+1. Membuka kembali file `src/App.vue`, pada tag `<script>`, lakukan import untuk `CustomFooter.vue`
+    ```js
+    <script>
+    // Lakukan import axios di sini
+    import axios from "axios";
+    // Lakukan import sweetalert di sini
+    import Swal from "sweetalert2";
+
+    // Import CustomFooter.vue di sini
+    import CustomFooter from "./components/CustomFooter.vue";
+
+    ...
+    </script>
+    ```
+1. Masih pada file yang sama, pada tag script, di dalam `export default`, tambahkan registrasi components
+    ```js
+    export default {
+      name: "App",
+      components: {
+        CustomFooter
+      },
+      ...
+    }
+    ```
+1. Masih pada file yang sama, pada tag template, sebelum penutup div, kita akan memanggil component `CustomFooter` tersebut
+    ```html
+    <template>
+      ...
+        <CustomFooter></CustomFooter>
+      </div>
+    </template>
+    ```
+
+
+Langkah 5 - Pecah Komponen Bagian NavBar
+
+Langkah 6 - Pecah Komponen Bagian Login Page
 
 ### Referensi
 (Single File Components)
