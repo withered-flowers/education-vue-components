@@ -279,14 +279,146 @@ Setelah selesai mempelajari ini semua, mari kita coba untuk melakukan pemecahan 
 - Aplikasi yang sudah dibuat merupakan sebuah aplikasi sederhana yang menembak data langsung dari json-server yang sudah ada.
 - Aplikasi ini masih berupa sebuah file index.html yang sangat besar
 
-Langkah 1 - Inisialisasi Server
+### Langkah 1 - Inisialisasi Server
 1. Membuka folder `server` yang sudah disediakan
 1. Menginstall package yang dibutuhkan dengan menggunakan perintah `npm i`
 1. Menjalankan server dengan menggunakan perintah `npx json-server db.json`
 
-Langkah 2 - Inisiaslisasi Client
+### Langkah 2 - Inisiaslisasi Client
 1. Membuka folder `client` yang sudah disediakan
-1. 
+1. Menginisialisasi project dengan menggunakan `npm init -y`
+1. Menginstall package Vue v2 dengan menggunakan perintah `npm i vue@2`
+1. Membuat sebuah folder baru dengan nama `src`
+1. Membuat 2 buah file baru dengan nama `App.vue` dan `main.js` di dalam folder `src` yang dibuat sebelumnya
+1. Membuka file `App.vue` dan menuliskan kode sebagai berikut
+    ```html
+    <!-- File: src/App.vue -->
+
+    <template>
+      <div>
+        <!-- Langkah selanjutnya akan diletakkan di dalam sini ! -->
+      </div>
+    </template>
+
+    <script>
+    export default {
+      name: "App",
+    };
+    </script>
+
+    <style></style>
+    ```
+1. Memindahkan seluruh isi section di dalam body `index.html` dari line 18 s.d. line 270 (Comment `section 1` s.d. `section 5`) ke dalam `template div` yang ada pada file `src/App.vue`
+1. Perhatikan pada `index.html`, pada bagian `const app = new Vue({ ... })` yang sudah dideklarasikan, pindahkan property `data`, `methods`, `created`, `computed` yang ada di dalam `index.html` ke dalam file `src/App.vue`
+1. Modifikasi `data` yang ada di dalam file `src/App.vue` yang baru sekarang ini menjadi bentuk function
+    ```js
+    // sebelumnya
+    data: {
+      ...
+    }
+
+    // menjadi
+    data() {
+      return {
+        ...
+      }
+    }
+    ```
+1. Menuliskan kode pada file `main.js` menjadi sebagai berikut
+    ```js
+    // File: src/main.js
+
+    import Vue from "vue";
+    import App from "./App.vue";
+
+    new Vue({
+      render: (createElement) => createElement(App),
+    }).$mount("#app");
+    ```
+1. Memodifikasi file `index.html` untuk menghilangkan bagian `script src vue` dan `custom script yang sudah dibuat` dan menambahkan script src yang mengarah ke `src/main.js`
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link
+          href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+          rel="stylesheet"
+        />
+
+        <title>ToDo VueJS v2</title>
+      </head>
+
+      <body>
+        <div id="app"></div>
+
+        <!-- Script section -->
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <script
+          src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"
+          integrity="sha512-otOZr2EcknK9a5aa3BbMR9XOjYKtxxscwyRHN6zmdXuRfJ5uApkHB7cz1laWk2g8RKLzV9qv/fl3RPwfCuoxHQ=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"
+        ></script>
+
+        <script src="./src/main.js"></script>
+      </body>
+    </html>
+    ```
+1. Menjalankan kode dengan menggunakan perintah `parcel index.html`
+
+Sampai dengan tahap ini kita sudah berhasil menginisialisasi project yang sudah dibuat sebelumnya, namun sudah menggunakan versi parcel ! Selamat !
+
+Langkah selanjutnya kita akan mulai menggunakan cara import untuk mengurangi script src pada `index.html` yang dibuat
+
+### Langkah 3 - Modifikasi Axios dan SweetAlert
+1. Membuka kembali file `src/App.vue`
+1. Memodifikasi kode di dalam tag `<script>` dengan menambahkan import axios dan sweetalert sebagai berikut
+    ```js
+    // File: src/App.vue
+
+    <script>
+      // Lakukan import axios di sini
+      import axios from "axios";
+      // Lakukan import sweetalert di sini
+      import Swal from "sweetalert2";
+
+      export default {
+        ...
+      }
+    </script>
+    ```
+1. Membuka kembali file `index.html`
+1. Menghapus bagian script import sweetalert dan axios pada `index.html` sehingga menjadi sebagai berikut
+    ```html
+    <!-- File: index.html -->
+
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link
+          href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+          rel="stylesheet"
+        />
+
+        <title>ToDo VueJS v2</title>
+      </head>
+
+      <body>
+        <div id="app"></div>
+        <script src="./src/main.js"></script>
+      </body>
+    </html>
+    ```
+1. File `index.html` menjadi lebih ramping bukan?
 
 ### Referensi
 (Single File Components)
