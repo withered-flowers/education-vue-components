@@ -6,6 +6,7 @@
 1. [Component How To](#component-how-to)
 1. [Single File Components](#single-file-components)
 1. [Intro to Build Tools - Parcel](#intro-to-build-tools---parcel)
+1. [Let's Demo](#lets-demo)
 1. [Referensi](#referensi)
 
 
@@ -422,7 +423,7 @@ Langkah selanjutnya kita akan mulai menggunakan cara import untuk mengurangi scr
 
 Sampai di langkah ini kita sudah masuk ke dalam penggunaan import yang lebih memanjakan kita yah, selanjutnya kita akan mulai masuk ke dalam pemecahan komponen yang lebih kecil lagi !
 
-Langkah 4 - Pecah Komponen Bagian Footer
+### Langkah 4 - Pecah Komponen Bagian Footer
 1. Membuat sebuah folder baru di dalam `src` dengan nama `components`. Folder ini akan berisi seluruh component yang telah dipecah-pecah.
 1. Membuat sebuah file baru dengan nama `CustomFooter.vue` pada folder `components`
 1. Masukkan kode berikut ke dalam `CustomFooter.vue`
@@ -508,9 +509,9 @@ Langkah 4 - Pecah Komponen Bagian Footer
     ```
 
 
-Langkah 5 - Pecah Komponen Bagian NavBar
+### Langkah 5 - Pecah Komponen Bagian NavBar
 
-Langkah 6 - Pecah Komponen Bagian Login Page
+### Langkah 6 - Pecah Komponen Bagian Login Page
 
 ### Referensi
 (Single File Components)
