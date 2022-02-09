@@ -420,6 +420,12 @@ Langkah selanjutnya kita akan mulai menggunakan cara import untuk mengurangi scr
     ```
 1. File `index.html` menjadi lebih ramping bukan?
 
+Sampai di langkah ini kita sudah masuk ke dalam penggunaan import yang lebih memanjakan kita yah, selanjutnya kita akan mulai masuk ke dalam pemecahan komponen yang lebih kecil lagi !
+
+Langkah 4 - Pecah Komponen Bagian NavBar
+
+Langkah 5 - Pecah Komponen Bagian Login Page
+
 ### Referensi
 (Single File Components)
 - https://v2.vuejs.org/v2/guide/components.html#Base-Example
